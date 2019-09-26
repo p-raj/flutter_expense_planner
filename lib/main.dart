@@ -32,21 +32,21 @@ class MyHomePage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Flutter App'),
-      ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Container(
-                child: Card(
-              color: Colors.black,
-              child: Text('List of Tx'),
-            )),
-            UserTransactions()
-          ],
+        appBar: AppBar(
+          title: Text('Flutter App'),
         ),
-      ),
-    );
+        body: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                    child: Card(
+                  color: Colors.black,
+                  child: Text('List of Tx'),
+                )),
+                UserTransactions()
+              ],
+            ),
+          ),
+        );
   }
 }
