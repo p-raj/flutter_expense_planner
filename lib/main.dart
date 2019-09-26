@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_expense_planner/widgets/new_transaction.dart';
+import 'package:flutter_expense_planner/widgets/user_transactions.dart';
 
 import './models/transaction.dart';
-import './widgets/transaction_list.dart';
+import './widgets/user_transactions.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,9 +30,6 @@ class MyHomePage extends StatelessWidget {
   // String titleInput;
   // String amountImput;
 
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -44,43 +43,7 @@ class MyHomePage extends StatelessWidget {
               color: Colors.black,
               child: Text('List of Tx'),
             )),
-            Card(
-              elevation: 5,
-              child: Container(
-                padding: EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Title',
-                      ),
-                      controller: titleController,
-                      onChanged: (v) {},
-                    ), 
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Amount',
-                      ),
-                      controller: amountController,
-                      onChanged: (v) {},
-                    ), 
-                    FlatButton(
-                      child: Text('Add'),
-                      textColor: Colors.redAccent.shade400,
-                      onPressed: () {
-                        
-                      },
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Column(
-                children: txn.map((tx) {
-              return TransactionList(
-                  title: tx.title, amount: tx.amount, date: tx.date);
-            }).toList()),
+            UserTransactions()
           ],
         ),
       ),
