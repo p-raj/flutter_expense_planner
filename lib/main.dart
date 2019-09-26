@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import './transaction.dart';
-import './transaction_card.dart';
+import './models/transaction.dart';
+import './widgets/transaction_list.dart';
 
 void main() => runApp(MyApp());
 
@@ -78,7 +78,7 @@ class MyHomePage extends StatelessWidget {
             ),
             Column(
                 children: txn.map((tx) {
-              return TransactionCard(
+              return TransactionList(
                   title: tx.title, amount: tx.amount, date: tx.date);
             }).toList()),
           ],

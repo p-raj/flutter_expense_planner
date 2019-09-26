@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 //# 3p packages
 import 'package:intl/intl.dart';
 
-class TransactionCard extends StatelessWidget {
+class TransactionList extends StatelessWidget {
   final String title;
   final double amount;
   final DateTime date;
 
-  TransactionCard(
+  TransactionList(
       {
         @required this.title, 
         @required this.amount, 
