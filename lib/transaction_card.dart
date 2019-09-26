@@ -1,4 +1,7 @@
+//# fultter
 import 'package:flutter/material.dart';
+//# 3p packages
+import 'package:intl/intl.dart';
 
 class TransactionCard extends StatelessWidget {
   final String title;
@@ -19,7 +22,9 @@ class TransactionCard extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Container(
-            child: Text(this.amount.toString()),
+            child: Text(
+              '\$ ${this.amount}' // string interpolation
+            ),
             margin: EdgeInsets.all(10.0),
             padding: EdgeInsets.all(10.0),
             decoration: BoxDecoration(border: Border.all(
@@ -40,7 +45,7 @@ class TransactionCard extends StatelessWidget {
                 ),
               ), 
               Text(
-                this.date.toString(),
+                DateFormat.yMMMEd().format(this.date),
                 style: TextStyle(
                   fontWeight: FontWeight.normal,
                   color: Colors.grey,
