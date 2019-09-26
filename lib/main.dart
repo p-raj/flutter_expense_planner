@@ -25,6 +25,12 @@ class MyHomePage extends StatelessWidget {
     Transaction(id: '2', title: 'Uber', amount: 100.0, date: DateTime.now()),
   ];
 
+  // String titleInput;
+  // String amountImput;
+
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -34,11 +40,42 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Container(
-
                 child: Card(
               color: Colors.black,
               child: Text('List of Tx'),
             )),
+            Card(
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Title',
+                      ),
+                      controller: titleController,
+                      onChanged: (v) {},
+                    ), 
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Amount',
+                      ),
+                      controller: amountController,
+                      onChanged: (v) {},
+                    ), 
+                    FlatButton(
+                      child: Text('Add'),
+                      textColor: Colors.redAccent.shade400,
+                      onPressed: () {
+                        
+                      },
+                    )
+                  ],
+                ),
+              ),
+            ),
             Column(
                 children: txn.map((tx) {
               return TransactionCard(
