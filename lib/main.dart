@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_expense_planner/widgets/new_transaction.dart';
+
 import 'package:flutter_expense_planner/widgets/user_transactions.dart';
 
 import './models/transaction.dart';
@@ -32,21 +32,19 @@ class MyHomePage extends StatelessWidget {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Flutter App'),
-        ),
-        body: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                Container(
-                    child: Card(
-                  color: Colors.black,
-                  child: Text('List of Tx'),
-                )),
-                UserTransactions()
-              ],
-            ),
-          ),
-        );
+      appBar: AppBar(
+        title: Text('Flutter App'),
+      ),
+      body: Column(
+        children: <Widget>[
+          Container(
+              child: Card(
+            color: Colors.black,
+            child: Text('List of Tx'),
+          )),
+          UserTransactions()
+        ],
+      ),
+    );
   }
 }
