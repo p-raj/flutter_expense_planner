@@ -14,7 +14,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 300,
+        height: 500,
         child: ListView.builder(
           itemBuilder: (ctx, idx) {
             final t = _userTXN[idx];
@@ -22,7 +22,7 @@ class TransactionList extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   Container(
-                    child: Text('\$ ${t.amount}' // string interpolation
+                    child: Text('\$ ${t.amount.toStringAsFixed(2)}' // string interpolation
                         ),
                     margin: EdgeInsets.all(10.0),
                     padding: EdgeInsets.all(10.0),

@@ -6,6 +6,17 @@ class NewTransaction extends StatelessWidget {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
+  void submitData() {
+    final enteredTitle = titleController.text;
+    final enteredAmount = amountController.text;
+
+    if (enteredTitle.isEmpty || enteredAmount.isEmpty || double.tryParse(enteredAmount) < 0.0) {
+      return;
+    }
+
+    this._addNewTxn(enteredTitle, enteredAmount);
+  }
+
   NewTransaction(this._addNewTxn);
 
   @override
@@ -23,6 +34,7 @@ class NewTransaction extends StatelessWidget {
                   labelText: 'Title',
                 ),
                 controller: titleController,
+                onSubmitted: (_) => this.submitData(),
               ),
               TextField(
                 keyboardType: TextInputType.number,
@@ -30,14 +42,12 @@ class NewTransaction extends StatelessWidget {
                   labelText: 'Amount',
                 ),
                 controller: amountController,
+                onSubmitted: (_) => this.submitData(),
               ),
               FlatButton(
                 child: Text('Add'),
                 textColor: Colors.redAccent.shade400,
-                onPressed: () => this._addNewTxn(
-                    titleController.text, 
-                    amountController.text
-                ),
+                onPressed: () => this.submitData(),
               )
             ],
           ),
