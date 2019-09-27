@@ -14,8 +14,9 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 500,
+        
         child: ListView.builder(
+          shrinkWrap: true,
           itemBuilder: (ctx, idx) {
             final t = _userTXN[idx];
             return Card(
