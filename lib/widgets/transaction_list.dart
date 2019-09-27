@@ -14,43 +14,53 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        
-        child: ListView.builder(
-          shrinkWrap: true,
-          itemBuilder: (ctx, idx) {
-            final t = _userTXN[idx];
-            return Card(
-              child: Row(
+        child: _userTXN.isEmpty
+            ? Column(
                 children: <Widget>[
-                  Container(
-                    child: Text('\$ ${t.amount.toStringAsFixed(2)}' // string interpolation
-                        ),
-                    margin: EdgeInsets.all(10.0),
-                    padding: EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Theme.of(context).primaryColor,
-                            width: 2.0,
-                            style: BorderStyle.solid)),
+                  SizedBox(
+                    height: 10,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        t.title,
-                        style: Theme.of(context).textTheme.title
-                      ),
-                      Text(
-                        DateFormat.yMMMEd().format(t.date),
-                        style: Theme.of(context).textTheme.subtitle
-                      )
-                    ],
+                  Container(
+                    child: Image.asset(
+                      'assets/images/nope.png',
+                      fit: BoxFit.cover,
+                    ),
                   )
                 ],
-              ),
-            );
-          },
-          itemCount: _userTXN.length,
-        ));
+              )
+            : ListView.builder(
+                shrinkWrap: true,
+                itemBuilder: (ctx, idx) {
+                  final t = _userTXN[idx];
+                  return Card(
+                    child: Row(
+                      children: <Widget>[
+                        Container(
+                          child: Text(
+                              '\$ ${t.amount.toStringAsFixed(2)}' // string interpolation
+                              ),
+                          margin: EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(10.0),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Theme.of(context).primaryColor,
+                                  width: 2.0,
+                                  style: BorderStyle.solid)),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(t.title,
+                                style: Theme.of(context).textTheme.title),
+                            Text(DateFormat.yMMMEd().format(t.date),
+                                style: Theme.of(context).textTheme.subtitle)
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                },
+                itemCount: _userTXN.length,
+              ));
   }
 }

@@ -64,7 +64,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  final List<Transaction> _txn = [
+  final List<Transaction> _txn = [] 
+  /*[
     Transaction(id: '1', title: 'Paytm', amount: 400.0, date: DateTime.now()),
     Transaction(id: '2', title: 'Uber', amount: 100.0, date: DateTime.now()),
     Transaction(id: '3', title: 'ICIC', amount: 100.0, date: DateTime.now()),
@@ -75,7 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(id: '8', title: 'Laptop', amount: 100.0, date: DateTime.now()),
     Transaction(id: '9', title: 'GPU', amount: 100.0, date: DateTime.now()),
     Transaction(id: '9', title: 'Desktop', amount: 100.0, date: DateTime.now()),
-  ];
+  ]*/
+  ;
 
   void _startAddNewTxn(BuildContext ctx) {
     showModalBottomSheet(
