@@ -15,44 +15,47 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 300,
-        child: ListView(
-            children: _userTXN.map((t) {
-          return Card(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  child: Text('\$ ${t.amount}' // string interpolation
+        child: ListView.builder(
+          itemBuilder: (ctx, idx) {
+            final t = _userTXN[idx];
+            return Card(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    child: Text('\$ ${t.amount}' // string interpolation
+                        ),
+                    margin: EdgeInsets.all(10.0),
+                    padding: EdgeInsets.all(10.0),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.black,
+                            width: 2.0,
+                            style: BorderStyle.solid)),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        t.title,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue,
+                            fontSize: 16),
                       ),
-                  margin: EdgeInsets.all(10.0),
-                  padding: EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Colors.black,
-                          width: 2.0,
-                          style: BorderStyle.solid)),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      t.title,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue,
-                          fontSize: 16),
-                    ),
-                    Text(
-                      DateFormat.yMMMEd().format(t.date),
-                      style: TextStyle(
-                        fontWeight: FontWeight.normal,
-                        color: Colors.grey,
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          );
-        }).toList()));
+                      Text(
+                        DateFormat.yMMMEd().format(t.date),
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          color: Colors.grey,
+                        ),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            );
+          },
+          itemCount: _userTXN.length,
+        ));
   }
 }
