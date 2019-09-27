@@ -23,6 +23,9 @@ class _NewTransactionState extends State<NewTransaction> {
     }
 
     this.widget._addNewTxn(enteredTitle, enteredAmount);
+    // access the properties of the widget clss
+    // inside the state class
+    // pretty cool
   }
 
   @override
