@@ -28,7 +28,7 @@ class TransactionList extends StatelessWidget {
                     padding: EdgeInsets.all(10.0),
                     decoration: BoxDecoration(
                         border: Border.all(
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColor,
                             width: 2.0,
                             style: BorderStyle.solid)),
                   ),
@@ -39,14 +39,15 @@ class TransactionList extends StatelessWidget {
                         t.title,
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.blue,
-                            fontSize: 16),
+                            fontSize: 20,
+                            color: Theme.of(context).accentColor
+                          ),
                       ),
                       Text(
                         DateFormat.yMMMEd().format(t.date),
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
-                          color: Colors.grey,
+                          color: Theme.of(context).accentColor
                         ),
                       )
                     ],

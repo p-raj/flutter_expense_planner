@@ -14,27 +14,33 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
-      home: MyHomePage(),
-    );
+        title: 'Personal Expanses',
+        home: MyHomePage(),
+        theme: ThemeData(
+            primarySwatch: Colors.green,
+            accentColor: Colors.black87,
+            scaffoldBackgroundColor: Colors.white,
+            appBarTheme: AppBarTheme(
+              color: Colors.white,
+              elevation: 0,
+              textTheme: TextTheme(
+                  title: TextStyle(color: Colors.black87, fontSize: 26)),
+            )));
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-void _addNewTxn(String t, String a) {
+  void _addNewTxn(String t, String a) {
     final newTxn = Transaction(
         title: t,
         amount: double.parse(a),
         date: DateTime.now(),
-        id: DateTime.now().toString()
-        );
+        id: DateTime.now().toString());
 
     setState(() {
       this._txn.add(newTxn);
@@ -48,43 +54,29 @@ void _addNewTxn(String t, String a) {
 
   void _startAddNewTxn(BuildContext ctx) {
     showModalBottomSheet(
-      context: ctx,
-      builder: (_) {
-        return GestureDetector(
-          child: NewTransaction(this._addNewTxn),
-          behavior: HitTestBehavior.opaque,
-          onTap: () {},
-          )
-        ;
-      }
-    );
+        context: ctx,
+        builder: (_) {
+          return GestureDetector(
+            child: NewTransaction(this._addNewTxn),
+            behavior: HitTestBehavior.opaque,
+            onTap: () {},
+          );
+        });
   }
 
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => _startAddNewTxn(context),
       ),
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text('Flutter App'),
-        elevation: 0,
-        textTheme: TextTheme(
-          title: TextStyle(
-            color: Colors.black,
-            fontSize: 26
-          )
-        ),
+        title: Text('Personal Expanses'),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
-                Icons.add
-              ),
-              color: Colors.black,
-              onPressed: () => _startAddNewTxn(context),
-
+            icon: Icon(Icons.add),
+            color: Colors.black,
+            onPressed: () => _startAddNewTxn(context),
           )
         ],
       ),
