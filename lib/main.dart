@@ -21,6 +21,18 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.green,
             accentColor: Colors.black87,
             scaffoldBackgroundColor: Colors.white,
+            textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 20
+              ),
+              subtitle: TextStyle(
+                color: Colors.black54,
+                fontWeight: FontWeight.normal,
+                fontSize: 16
+              ),
+            ),
             appBarTheme: AppBarTheme(
               color: Colors.white,
               elevation: 0,
