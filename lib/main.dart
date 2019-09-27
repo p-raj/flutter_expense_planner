@@ -4,6 +4,7 @@ import 'package:flutter_expense_planner/widgets/transaction_list.dart';
 // import 'package:flutter_expense_planner/widgets/user_transactions.dart';
 //# widgets
 import './widgets/new_transaction.dart';
+import './widgets/chart.dart';
 //# models
 import './models/transaction.dart';
 
@@ -64,8 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  final List<Transaction> _txn = [] 
-  /*[
+  // final List<Transaction> _txn = [] 
+  final List<Transaction> _txn = [
     Transaction(id: '1', title: 'Paytm', amount: 400.0, date: DateTime.now()),
     Transaction(id: '2', title: 'Uber', amount: 100.0, date: DateTime.now()),
     Transaction(id: '3', title: 'ICIC', amount: 100.0, date: DateTime.now()),
@@ -76,8 +77,19 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(id: '8', title: 'Laptop', amount: 100.0, date: DateTime.now()),
     Transaction(id: '9', title: 'GPU', amount: 100.0, date: DateTime.now()),
     Transaction(id: '9', title: 'Desktop', amount: 100.0, date: DateTime.now()),
-  ]*/
+  ]
   ;
+
+  List<Transaction> get _recentTransactions {
+    return this._txn.where((t) {
+      return 
+      t
+      .date
+      .isAfter(
+        DateTime.now()
+        .subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   void _startAddNewTxn(BuildContext ctx) {
     showModalBottomSheet(
@@ -109,11 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: <Widget>[
-          Container(
-              child: Card(
-            color: Colors.black,
-            child: Text('List of Tx'),
-          )),
+          Chart(this._recentTransactions),
           TransactionList(this._txn),
         ],
       ),
