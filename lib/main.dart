@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         title: 'Personal Expanses',
         home: MyHomePage(),
         theme: ThemeData(
+            fontFamily: 'Avenir',
             primarySwatch: Colors.green,
             accentColor: Colors.black87,
             scaffoldBackgroundColor: Colors.white,
@@ -24,7 +25,11 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
               elevation: 0,
               textTheme: TextTheme(
-                  title: TextStyle(color: Colors.black87, fontSize: 26)),
+                  title: TextStyle(
+                    color: Colors.black87, 
+                    fontSize: 26
+                    )
+                  ),
             )));
   }
 }
