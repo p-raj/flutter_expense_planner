@@ -26,6 +26,11 @@ class _NewTransactionState extends State<NewTransaction> {
     // access the properties of the widget clss
     // inside the state class
     // pretty cool
+
+    Navigator.of(context).pop();
+    // context available in all the classes
+    // state is connected to the class
+    // flutter automatically connects it
   }
 
   @override
