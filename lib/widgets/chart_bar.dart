@@ -12,38 +12,41 @@ class ChartBar extends StatelessWidget {
     return Column(
       children: <Widget>[
         FittedBox(
+          fit: BoxFit.fill,
           child: Text('\$${spendingAmount}'),
         ),
         SizedBox(
-          height: 4,
+          height: 10,
         ),
-        Container(
-          height: 40,
-          width: 10,
-          child: Stack(
-            children: <Widget>[
-              Container(
-                decoration:
-                    BoxDecoration(
-                      border: Border.all(color: Colors.grey),
-                      color: Color.fromRGBO(220, 220, 220, 0.51),
-                      borderRadius: BorderRadius.circular(10)
-                      ),
-              ),
-              FractionallySizedBox(
-                heightFactor: spendingPctOfTotal,
-                child: Container(
-                  // child: Text(label),
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor
+        Expanded(
+          child: Container(
+            // height: 100,
+            width: 30,
+            child: Stack(
+              children: <Widget>[
+                FractionallySizedBox(
+                  alignment: Alignment.bottomCenter,
+                  heightFactor: spendingPctOfTotal,
+                  child: Container(
+                    // child: Text(label),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Theme.of(context).primaryColor),
                   ),
                 ),
-              )
-            ],
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Theme.of(context).primaryColorLight),
+                      // color: Color.fromRGBO(220, 220, 220, 0.51),
+                      borderRadius: BorderRadius.circular(10)),
+                ),
+              ],
+            ),
           ),
         ),
         SizedBox(
-          height: 4,
+          height: 1,
         ),
         FittedBox(
           child: Text('${label}'),
