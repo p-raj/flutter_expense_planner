@@ -33,32 +33,25 @@ class TransactionList extends StatelessWidget {
               // shrinkWrap: true,
               itemBuilder: (ctx, idx) {
                 final t = _userTXN[idx];
-                return Card(
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        child: Text(
-                            '\$ ${t.amount.toStringAsFixed(2)}' // string interpolation
-                            ),
-                        margin: EdgeInsets.all(10.0),
-                        padding: EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                                width: 2.0,
-                                style: BorderStyle.solid)),
+                return ListTile(
+                  leading: CircleAvatar(
+                    // backgroundColor: Colors.transparent,
+                    radius: 30,
+                    child: Container(
+                      child: Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: FittedBox(
+                          child: Text(
+                              '\$${t.amount.toStringAsFixed(1)}' // string interpolation
+                              ),
+                        ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(t.title,
-                              style: Theme.of(context).textTheme.title),
-                          Text(DateFormat.yMMMEd().format(t.date),
-                              style: Theme.of(context).textTheme.subtitle)
-                        ],
-                      )
-                    ],
+                    ),
                   ),
+                  title:
+                      Text(t.title, style: Theme.of(context).textTheme.title),
+                  subtitle: Text(DateFormat.yMMMEd().format(t.date),
+                      style: Theme.of(context).textTheme.subtitle),
                 );
               },
               itemCount: _userTXN.length,
