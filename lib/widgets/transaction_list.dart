@@ -14,6 +14,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
+      flex: 1,
       fit: FlexFit.tight,
       child: Container(
           // height: 500,
