@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       this._txn.add(newTxn);
     });
-    print(DateTime.now());
+    // print(DateTime.now());
   }
 
   // final List<Transaction> _txn = []
