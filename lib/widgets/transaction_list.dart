@@ -33,7 +33,7 @@ class TransactionList extends StatelessWidget {
                   ],
                 )
               : ListView.builder(
-                  shrinkWrap: true,
+                  // shrinkWrap: true,
                   itemBuilder: (ctx, idx) {
                     final t = _userTXN[idx];
                     return Card(
