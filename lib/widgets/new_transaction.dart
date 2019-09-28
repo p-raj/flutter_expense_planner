@@ -13,7 +13,7 @@ class NewTransaction extends StatefulWidget {
 class _NewTransactionState extends State<NewTransaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
-  DateTime _selectedDate;
+  DateTime _selectedDate = DateTime.now();
 
   void _submitData() {
     final enteredTitle = titleController.text;
@@ -25,7 +25,7 @@ class _NewTransactionState extends State<NewTransaction> {
       return;
     }
 
-    this.widget._addNewTxn(enteredTitle, enteredAmount);
+    this.widget._addNewTxn(enteredTitle, enteredAmount, _selectedDate);
     // access the properties of the widget clss
     // inside the state class
     // pretty cool
@@ -44,7 +44,7 @@ class _NewTransactionState extends State<NewTransaction> {
             lastDate: DateTime.now())
         .then((DateTime pickedDate) {
       if (pickedDate == null) {
-        return;
+        pickedDate = DateTime.now();
       }
       setState(() {
         this._selectedDate = pickedDate;
@@ -84,7 +84,7 @@ class _NewTransactionState extends State<NewTransaction> {
                     child: Text(
                         this._selectedDate == null
                             ? 'Choose a Date'
-                            : DateFormat.yMd().format(this._selectedDate),
+                            : 'Date Chosen: ${DateFormat.yMd().format(this._selectedDate)}',
                         style: TextStyle(
                           color: Theme.of(context).primaryColorDark,
                         )),

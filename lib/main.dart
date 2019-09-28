@@ -47,11 +47,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void _addNewTxn(String t, String a) {
+  void _addNewTxn(String t, String a, DateTime d) {
     final newTxn = Transaction(
         title: t,
         amount: double.parse(a),
-        date: DateTime.now(),
+        date: d,
         id: DateTime.now().toString());
 
     setState(() {
