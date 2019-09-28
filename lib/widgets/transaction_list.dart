@@ -34,15 +34,24 @@ class TransactionList extends StatelessWidget {
               itemBuilder: (ctx, idx) {
                 final t = _userTXN[idx];
                 return ListTile(
-                  leading: CircleAvatar(
+                  leading: Container(
                     // backgroundColor: Colors.transparent,
-                    radius: 30,
+                    height: 60,
+                    width: 60,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColorDark,
+                      shape: BoxShape.circle
+                    ),
                     child: Container(
                       child: Padding(
                         padding: EdgeInsets.all(2.0),
                         child: FittedBox(
                           child: Text(
-                              '\$${t.amount.toStringAsFixed(1)}' // string interpolation
+                              '\$${t.amount.toStringAsFixed(1)}',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600
+                                ), // string interpolation
                               ),
                         ),
                       ),
